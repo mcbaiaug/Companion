@@ -4,6 +4,7 @@ import Nav from './components/Nav'
 import About from './pages/About'
 import Shop from './pages/Shop'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Home from './pages/Home'
 
 
 function App() {
@@ -22,11 +23,7 @@ function App() {
   )
 }
 
-const Home = () => (
-  <div>
-    <h1>Home Page</h1>
-  </div>
-)
+
 
 
 
