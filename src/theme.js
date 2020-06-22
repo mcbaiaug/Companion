@@ -1,9 +1,9 @@
-import { createMuiTheme, CssBaseline } from '@material-ui/core/styles';
-
-
+import { createMuiTheme } from '@material-ui/core/styles'
 
 const theme = createMuiTheme({
   palette: {
+    type: 'dark',
+
     primary: {
       light: '#484848',
       main: '#212121',
@@ -17,10 +17,8 @@ const theme = createMuiTheme({
       contrastText: '#ffffff',
     },
     background: {
-      default: '#212121'
+      default: '#212121',
     },
-
-
   },
   overrides: {
     MuiCssBaseline: {
@@ -31,6 +29,6 @@ const theme = createMuiTheme({
       },
     },
   },
-});
+})
 
 export default theme

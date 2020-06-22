@@ -1,6 +1,5 @@
 import React from 'react'
 import './App.css'
-import Nav from './components/Nav'
 import About from './pages/About'
 import Shop from './pages/Shop'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
@@ -12,19 +11,14 @@ function App() {
     <Router>
       <div className="App">
         {/* <Nav /> */}
-        <switch>
+        <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/about" component={About} />
           <Route path="/shop" component={Shop} />
-        </switch>
+        </Switch>
       </div>
     </Router>
-
   )
 }
 
-
-
-
-
-export default App;
+export default App
