@@ -7,8 +7,9 @@ import Divider from '@material-ui/core/Divider'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 import MenuIcon from '@material-ui/icons/Menu'
+// import MenuOpenIcon from '@material-ui/icons/MenuOpen'
 import IconButton from '@material-ui/core/IconButton'
-
+import ShortTextIcon from '@material-ui/icons/ShortText'
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -86,7 +87,7 @@ export default function TemporaryDrawer() {
             onClick={toggleDrawer(anchor, true)}
             className={classes.navIconHide}
           >
-            <MenuIcon />
+            <ShortTextIcon color="secondary" fontSize="large" />
           </IconButton>
           <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
             {list(anchor)}

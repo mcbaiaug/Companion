@@ -44,8 +44,8 @@ function Nav() {
             <Button color="inherit">Doug</Button>
           </div>
           <div className={classes.login}>
-            <Button color="secondary">Login</Button>
-            <Button color="secondary">Register</Button>
+            <Button  color="secondary">Login</Button>
+            <Button  color="secondary">Register</Button>
           </div>
           <ResDrawer />
         </Toolbar>
