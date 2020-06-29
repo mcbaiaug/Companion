@@ -1,18 +1,17 @@
 import React from 'react'
-import { Button, AppBar, Typography, Toolbar, IconButton, SvgIcon} from '@material-ui/core'
+import { Button, AppBar, Typography, Toolbar, IconButton, SvgIcon } from '@material-ui/core'
 import { ReactComponent as Finn } from './finn.svg'
 import { makeStyles } from '@material-ui/core/styles'
 import ResDrawer from './ResDrawer'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     justifyContent: 'space-between',
-  
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    
   },
   title: {
     flexGrow: 1,
@@ -25,11 +24,17 @@ const useStyles = makeStyles((theme) => ({
       display: 'none',
     },
   },
-
+  link: {
+    textDecoration: 'none',
+  },
 }))
 
 function Nav() {
   const classes = useStyles()
+
+  const existingTokens = JSON.parse(localStorage.getItem('tokens'))
+  const [authTokens, setAuthTokens] = React.useState(existingTokens)
+
   return (
     <div className={classes.root}>
       <AppBar position="static" color="primary">
@@ -43,10 +48,23 @@ function Nav() {
             <Button color="inherit">Asa</Button>
             <Button color="inherit">Doug</Button>
           </div>
-          <div className={classes.login}>
-            <Button  color="secondary">Login</Button>
-            <Button  color="secondary">Register</Button>
-          </div>
+          {authTokens ? (
+            <div className={classes.login}>
+                <Button onClick={() => {
+                  console.log('aaaa')
+                  localStorage.removeItem('tokens')
+                  setAuthTokens(null)} }color="secondary">Logout</Button>
+            </div>
+          ) : (
+            <div className={classes.login}>
+              <Link className={classes.link} to="/signin">
+                <Button color="secondary">Login</Button>
+              </Link>
+              <Link className={classes.link} to="/signup">
+                <Button color="secondary">Register</Button>
+              </Link>
+            </div>
+          )}
           <ResDrawer />
         </Toolbar>
       </AppBar>

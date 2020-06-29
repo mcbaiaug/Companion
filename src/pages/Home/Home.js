@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect} from 'react'
 import { Typography, Paper, Grid } from '@material-ui/core'
 // import { ReactComponent as Finn } from './finn.svg'
 import { makeStyles } from '@material-ui/core/styles'
@@ -22,12 +22,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
+
+
+
 function Home() {
   const classes = useStyles()
+
+  const existingTokens = JSON.parse(localStorage.getItem('tokens'))
+  const [authTokens, setAuthTokens] = React.useState(existingTokens)
+
+  useEffect(() => {
+    console.log('aa')
+    setAuthTokens(localStorage.getItem('tokens'))
+  }, [localStorage, setAuthTokens])
 
   return (
     <div>
       <Nav />
+      {JSON.stringify(existingTokens)}
       <div className={classes.root}>
         <Grid container spacing={3}>
           {/* <Grid item xs={12}>
