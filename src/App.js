@@ -29,8 +29,8 @@ function App(props) {
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
             <Route path="/shop" component={Shop} />
-            <Route path="/signup" component={SignUp} />
-            <Route path="/signin" component={SignIn} /> 
+            <Route path="/register" component={SignUp} />
+            <Route path="/login" component={SignIn} /> 
             <PrivateRoute path="/admin" component={Admin} />
           </Switch>
         </div>

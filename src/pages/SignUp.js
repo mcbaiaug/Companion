@@ -15,6 +15,7 @@ import Container from '@material-ui/core/Container'
 import axios from 'axios'
 import { useAuth } from '../context/auth'
 import { Redirect } from 'react-router-dom'
+import BaseNav from '../components/BaseNav'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -87,110 +88,113 @@ function SignUp(props) {
   }
 
   if (isLoggedIn) {
-      localStorage.setItem("tokens", JSON.stringify(userName));
-    
+    localStorage.setItem('tokens', JSON.stringify(userName))
+
     return <Redirect to={referer} />
   }
 
   // add post login function from react router auth
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign up
-        </Typography>
-        <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-                color="secondary"
-              />
+    <React.Fragment>
+      <BaseNav />
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign up
+          </Typography>
+          <form className={classes.form} noValidate>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="fname"
+                  name="firstName"
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="firstName"
+                  label="First Name"
+                  autoFocus
+                  color="secondary"
+                />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="lastName"
+                  label="Last Name"
+                  name="lastName"
+                  autoComplete="lname"
+                  color="secondary"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  id="email"
+                  label="Email Address"
+                  name="email"
+                  autoComplete="email"
+                  color="secondary"
+                  value={userName}
+                  onChange={(e) => {
+                    setUserName(e.target.value)
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  variant="outlined"
+                  required
+                  fullWidth
+                  name="password"
+                  label="Password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                  color="secondary"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value)
+                  }}
+                />
+              </Grid>
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-                color="secondary"
-              />
+            <Button
+              type="submit"
+              onClick={() => {
+                setLoggedIn(true)
+                postLogin()
+              }}
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Sign Up
+            </Button>
+            <Grid container justify="center">
+              <Grid item>
+                <Link href="/login" variant="body2" color="secondary">
+                  Already have an account? Sign in
+                </Link>
+              </Grid>
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                color="secondary"
-                value={userName}
-                onChange={(e) => {
-                  setUserName(e.target.value)
-                }}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                color="secondary"
-                value={password}
-                onChange={(e) => {
-                  setPassword(e.target.value)
-                }}
-              />
-            </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            onClick={() => {
-              setLoggedIn(true)
-              postLogin()
-            }}
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign Up
-          </Button>
-          <Grid container justify="center">
-            <Grid item>
-              <Link href="/signin" variant="body2" color="secondary">
-                Already have an account? Sign in
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
-      <Box mt={5}>
-        <Copyright />
-      </Box>
-    </Container>
+          </form>
+        </div>
+        <Box mt={5}>
+          <Copyright />
+        </Box>
+      </Container>
+    </React.Fragment>
   )
 }
 
