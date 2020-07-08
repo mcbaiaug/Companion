@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { useAuth } from './auth-context'
 
-function PrivateRoute({ component: Component, ...rest }) {
+function PrivateRouteLogged({ component: Component, ...rest }) {
   const { state } = useAuth()
   const { isLogged } = state
 
@@ -11,17 +11,17 @@ function PrivateRoute({ component: Component, ...rest }) {
       {...rest}
       render={(props) =>
         isLogged ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
+            <Redirect
             to={{
-              pathname: '/login',
+              pathname: '/',
             }}
           />
+        ) : (
+            <Component {...props} />
         )
       }
     />
   )
 }
 
-export default PrivateRoute
+export default PrivateRouteLogged

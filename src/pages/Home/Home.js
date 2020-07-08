@@ -1,8 +1,9 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Typography, Paper, Grid } from '@material-ui/core'
 // import { ReactComponent as Finn } from './finn.svg'
 import { makeStyles } from '@material-ui/core/styles'
 import Nav from './Nav'
+import { useAuth } from "../../auth-context";
 // import { ReactComponent as Stages } from './CatStages.svg'
 
 const useStyles = makeStyles((theme) => ({
@@ -22,24 +23,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-
-
-
 function Home() {
   const classes = useStyles()
 
-  const existingTokens = JSON.parse(localStorage.getItem('tokens'))
-  const [authTokens, setAuthTokens] = React.useState(existingTokens)
-
-  useEffect(() => {
-    console.log('aa')
-    setAuthTokens(localStorage.getItem('tokens'))
-  }, [localStorage, setAuthTokens])
+  const { state, doLogout } = useAuth()
+  const { isLogged, user } = state
 
   return (
     <div>
       <Nav />
-      {JSON.stringify(existingTokens)}
+      {user && <span style={{ marginLeft: '50px' }}>Welcome {user.name}</span>}
+
       <div className={classes.root}>
         <Grid container spacing={3}>
           {/* <Grid item xs={12}>

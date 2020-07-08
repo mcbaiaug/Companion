@@ -4,6 +4,8 @@ import { ReactComponent as Finn } from './finn.svg'
 import { makeStyles } from '@material-ui/core/styles'
 import ResDrawer from './ResDrawer'
 import { Link } from 'react-router-dom'
+import { useAuth } from "../../auth-context";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,9 +33,34 @@ const useStyles = makeStyles((theme) => ({
 
 function Nav() {
   const classes = useStyles()
+  const { state, doLogout } = useAuth()
+  const { isLogged, user } = state
 
-  const existingTokens = JSON.parse(localStorage.getItem('tokens'))
-  const [authTokens, setAuthTokens] = React.useState(existingTokens)
+  function renderLogButton() {
+    if (!isLogged) {
+      return (
+        <div className={classes.login}>
+          <Link className={classes.link} to="/login">
+            <Button color="secondary">Login</Button>
+          </Link>
+          <Link className={classes.link} to="/register">
+            <Button color="secondary">Register</Button>
+          </Link>
+        </div>
+      )
+    }
+
+    return (
+      <div className={classes.login}>
+        <Button
+          onClick={doLogout}
+          color="secondary"
+        >
+          Logout
+        </Button>
+      </div>
+    )
+  }
 
   return (
     <div className={classes.root}>
@@ -48,23 +75,7 @@ function Nav() {
             <Button color="inherit">Asa</Button>
             <Button color="inherit">Doug</Button>
           </div>
-          {authTokens ? (
-            <div className={classes.login}>
-                <Button onClick={() => {
-                  console.log('aaaa')
-                  localStorage.removeItem('tokens')
-                  setAuthTokens(null)} }color="secondary">Logout</Button>
-            </div>
-          ) : (
-            <div className={classes.login}>
-              <Link className={classes.link} to="/login">
-                <Button color="secondary">Login</Button>
-              </Link>
-              <Link className={classes.link} to="/register">
-                <Button color="secondary">Register</Button>
-              </Link>
-            </div>
-          )}
+          {renderLogButton()}
           <ResDrawer />
         </Toolbar>
       </AppBar>

@@ -6,13 +6,16 @@ import * as serviceWorker from './serviceWorker'
 import { ThemeProvider } from '@material-ui/core/styles'
 import theme from './theme'
 import { CssBaseline } from '@material-ui/core'
+import { AuthProvider } from './auth-context'
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <App />
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <App />
+      </ThemeProvider>
+    </AuthProvider>
   </React.StrictMode>,
 
   document.getElementById('root')

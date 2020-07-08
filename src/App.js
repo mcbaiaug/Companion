@@ -8,34 +8,29 @@ import Admin from './pages/Admin'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import PrivateRoute from './PrivateRoute'
-import { AuthContext } from './context/auth'
-import { useState } from 'react'
+import PrivateRouteLogged from './PrivateRouteLogged'
+import Spinner from './Spinner'
+import history from "./history";
 
-function App(props) {
-  const existingTokens = JSON.parse(localStorage.getItem('tokens'))
-  const [authTokens, setAuthTokens] = useState(existingTokens)
-
-  const setTokens = (data) => {
-    localStorage.setItem('tokens', JSON.stringify(data))
-    setAuthTokens(data)
-  }
+function App() {
 
   return (
-    <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
-      <Router>
+ 
+      <Router history={history}>
         <div className="App">
           {/* <Nav /> */}
+          <Spinner />
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/about" component={About} />
             <Route path="/shop" component={Shop} />
             <Route path="/register" component={SignUp} />
-            <Route path="/login" component={SignIn} /> 
+            <PrivateRouteLogged path="/login" component={SignIn} /> 
             <PrivateRoute path="/admin" component={Admin} />
           </Switch>
         </div>
       </Router>
-    </AuthContext.Provider>
+
   )
 }
 

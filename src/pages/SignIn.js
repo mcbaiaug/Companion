@@ -12,10 +12,9 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
-import axios from 'axios'
 import BaseNav from '../components/BaseNav'
-import { useAuth } from '../context/auth'
 import { Redirect } from 'react-router-dom'
+import { useAuth } from '../auth-context'
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -37,14 +36,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-export default function SignUp(props) {
+export default function SignUp() {
   const classes = useStyles()
-  const [isLoggedIn, setLoggedIn] = useState(false)
-  const [isError, setIsError] = useState(false)
-  const [userName, setUserName] = useState('')
-  const [password, setPassword] = useState('')
-  const { setAuthTokens } = useAuth()
-  const referer = '/' || props.location.state.referer
 
   function Copyright() {
     return (
@@ -59,30 +52,21 @@ export default function SignUp(props) {
     )
   }
 
-  function postLogin() {
-    axios
-      .post('https://www.somePlace.com/auth/login', {
-        userName,
-        password,
-      })
-      .then((result) => {
-        if (result.status === 200) {
-          setAuthTokens(result.data)
-          setLoggedIn(true)
-        } else {
-          setIsError(true)
-        }
-      })
-      .catch((e) => {
-        setIsError(true)
-      })
+  const { state, doLogin } = useAuth()
+  const [user, setUser] = React.useState('')
+  const inputRef = React.useRef(null)
+
+  const { isLogged, error } = state
+
+  if (isLogged) return <Redirect to="/" />
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    doLogin(user)
+    setUser('')
   }
 
-  if (isLoggedIn) {
-    localStorage.setItem('tokens', JSON.stringify(userName))
-
-    return <Redirect to={referer} />
-  }
+  const handleChange = (e) => setUser(e.target.value)
 
   return (
     <React.Fragment>
@@ -96,7 +80,8 @@ export default function SignUp(props) {
           <Typography component="h1" variant="h5">
             Sign In
           </Typography>
-          <form className={classes.form} noValidate>
+          {error && <p style={{ color:"red", marginTop: '1px', marginBottom: '0px' }}>Error: {error}</p>}
+          <form className={classes.form} onSubmit={handleSubmit}>
             <Grid>
               <Grid item xs={12}>
                 <TextField
@@ -106,12 +91,10 @@ export default function SignUp(props) {
                   id="email"
                   label="Email Address"
                   name="email"
-                  value={userName}
+                  value={user}
                   autoComplete="email"
                   color="secondary"
-                  onChange={(e) => {
-                    setUserName(e.target.value)
-                  }}
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -122,27 +105,15 @@ export default function SignUp(props) {
                   name="password"
                   label="Password"
                   type="password"
-                  value={password}
+                  // value={password}
                   id="password"
                   autoComplete="current-password"
                   color="secondary"
-                  onChange={(e) => {
-                    setPassword(e.target.value)
-                  }}
+                  // onChange={handleChange}
                 />
               </Grid>
             </Grid>
-            <Button
-              type="submit"
-              onClick={() => {
-                setLoggedIn(true)
-                postLogin()
-              }}
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            >
+            <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
               Sign Up
             </Button>
             <Grid container justify="center">
@@ -153,6 +124,7 @@ export default function SignUp(props) {
               </Grid>
             </Grid>
           </form>
+         
         </div>
         <Box mt={5}>
           <Copyright />

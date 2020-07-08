@@ -4,7 +4,6 @@ import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import TextField from '@material-ui/core/TextField'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Checkbox from '@material-ui/core/Checkbox'
 import Link from '@material-ui/core/Link'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
@@ -12,10 +11,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
-import axios from 'axios'
-import { useAuth } from '../context/auth'
 import { Redirect } from 'react-router-dom'
 import BaseNav from '../components/BaseNav'
+import { useAuth } from "../auth-context";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,14 +45,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-function SignUp(props) {
+function SignUp() {
   const classes = useStyles()
-  const [isLoggedIn, setLoggedIn] = useState(false)
-  const [isError, setIsError] = useState(false)
-  const [userName, setUserName] = useState('')
-  const [password, setPassword] = useState('')
-  const { setAuthTokens } = useAuth()
-  const referer = '/' || props.location.state.referer
+  const { state, doLogin } = useAuth()
+  const [user, setUser] = React.useState('')
+  const inputRef = React.useRef(null)
+
+  const { isLogged, error } = state
+
+
+
+  if (isLogged) return <Redirect to="/" />
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    doLogin(user)
+    setUser('')
+  }
+
+  const handleChange = (e) => setUser(e.target.value)
+ 
 
   function Copyright() {
     return (
@@ -68,33 +79,6 @@ function SignUp(props) {
     )
   }
 
-  function postLogin() {
-    axios
-      .post('https://www.somePlace.com/auth/login', {
-        userName,
-        password,
-      })
-      .then((result) => {
-        if (result.status === 200) {
-          setAuthTokens(result.data)
-          setLoggedIn(true)
-        } else {
-          setIsError(true)
-        }
-      })
-      .catch((e) => {
-        setIsError(true)
-      })
-  }
-
-  if (isLoggedIn) {
-    localStorage.setItem('tokens', JSON.stringify(userName))
-
-    return <Redirect to={referer} />
-  }
-
-  // add post login function from react router auth
-
   return (
     <React.Fragment>
       <BaseNav />
@@ -107,7 +91,7 @@ function SignUp(props) {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -144,10 +128,8 @@ function SignUp(props) {
                   name="email"
                   autoComplete="email"
                   color="secondary"
-                  value={userName}
-                  onChange={(e) => {
-                    setUserName(e.target.value)
-                  }}
+                  value={user}
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -161,19 +143,13 @@ function SignUp(props) {
                   id="password"
                   autoComplete="current-password"
                   color="secondary"
-                  value={password}
-                  onChange={(e) => {
-                    setPassword(e.target.value)
-                  }}
+                  // value={password}
+                  // onChange={handleChange}
                 />
               </Grid>
             </Grid>
             <Button
               type="submit"
-              onClick={() => {
-                setLoggedIn(true)
-                postLogin()
-              }}
               fullWidth
               variant="contained"
               color="primary"
@@ -189,6 +165,7 @@ function SignUp(props) {
               </Grid>
             </Grid>
           </form>
+          
         </div>
         <Box mt={5}>
           <Copyright />
