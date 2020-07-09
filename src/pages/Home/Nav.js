@@ -4,8 +4,8 @@ import { ReactComponent as Finn } from './finn.svg'
 import { makeStyles } from '@material-ui/core/styles'
 import ResDrawer from './ResDrawer'
 import { Link } from 'react-router-dom'
-import { useAuth } from "../../auth-context";
-
+import { useAuth } from '../../auth-context'
+import '../../index.css'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
   },
   title: {
     flexGrow: 1,
@@ -52,15 +55,14 @@ function Nav() {
 
     return (
       <div className={classes.login}>
-        <Button
-          onClick={doLogout}
-          color="secondary"
-        >
+        <Button onClick={doLogout} color="secondary">
           Logout
         </Button>
       </div>
     )
   }
+
+
 
   return (
     <div className={classes.root}>
@@ -71,9 +73,15 @@ function Nav() {
             <Typography variant="h5">Companion</Typography>
           </IconButton>
           <div className={classes.title}>
-            <Button color="inherit">Finn</Button>
-            <Button color="inherit">Asa</Button>
-            <Button color="inherit">Doug</Button>
+            <Button  className="btn-2" color="inherit">
+              Finn
+            </Button>
+            <Button className="btn-2" color="inherit">
+              Asa
+            </Button>
+            <Button className="btn-2" color="inherit">
+              Doug
+            </Button>
           </div>
           {renderLogButton()}
           <ResDrawer />
