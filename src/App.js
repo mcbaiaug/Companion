@@ -10,6 +10,8 @@ import SignIn from './pages/SignIn'
 import PrivateRoute from './PrivateRoute'
 import { AuthContext } from './context/auth'
 import { useState } from 'react'
+import Dashboard from './pages/Dashboard/Dashboard'
+
 
 function App(props) {
   const existingTokens = JSON.parse(localStorage.getItem('tokens'))
@@ -32,6 +34,8 @@ function App(props) {
             <Route path="/register" component={SignUp} />
             <Route path="/login" component={SignIn} /> 
             <PrivateRoute path="/admin" component={Admin} />
+            <Route path="/dashboard" component={Dashboard} />
+            
           </Switch>
         </div>
       </Router>

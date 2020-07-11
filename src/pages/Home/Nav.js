@@ -12,6 +12,9 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
+    '&:hover': {
+      backgroundColor: 'transparent',
+    },
   },
   title: {
     flexGrow: 1,
@@ -39,7 +42,7 @@ function Nav() {
     <div className={classes.root}>
       <AppBar position="static" color="primary">
         <Toolbar variant="regular" className={classes.root}>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          <IconButton edge="end" className={classes.menuButton} color="inherit" aria-label="menu">
             <SvgIcon component={Finn} viewBox="0 0 10 10" fontSize="large" />
             <Typography variant="h5">Companion</Typography>
           </IconButton>
