@@ -10,6 +10,8 @@ import MenuIcon from '@material-ui/icons/Menu'
 // import MenuOpenIcon from '@material-ui/icons/MenuOpen'
 import IconButton from '@material-ui/core/IconButton'
 import ShortTextIcon from '@material-ui/icons/ShortText'
+import { Link } from 'react-router-dom'
+
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -32,6 +34,11 @@ const useStyles = makeStyles((theme) => ({
       position: 'relative',
     },
   },
+  link: {
+    textDecoration: 'none',
+    color:'white',
+  },
+  
 }))
 
 export default function TemporaryDrawer() {
@@ -68,10 +75,12 @@ export default function TemporaryDrawer() {
       <Divider />
       <List>
         {['Login', 'Register'].map((text, index) => (
-          <ListItem button key={text}>
-            {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> */}
-            <ListItemText primary={text} />
-          </ListItem>
+          <Link className={classes.link} to={`/${text.toLowerCase()}`}>
+            <ListItem button key={text}>
+              {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> */}
+              <ListItemText primary={text} />
+            </ListItem>
+          </Link>
         ))}
       </List>
     </div>
