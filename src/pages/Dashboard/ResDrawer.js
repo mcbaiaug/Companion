@@ -19,6 +19,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { ReactComponent as Finn } from './finn.svg'
 import { SvgIcon } from '@material-ui/core'
 import Companion from './Companion'
+import NoteIcon from '@material-ui/icons/Note';
 
 const drawerWidth = 55
 
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
+      width: `calc(100% - ${drawerWidth}px)`, 
       marginLeft: drawerWidth,
     },
   },
@@ -65,12 +66,48 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
+
+
 function ResponsiveDrawer({index,setIndex}) {
   let window
   const classes = useStyles()
   const theme = useTheme()
   const [mobileOpen, setMobileOpen] = React.useState(false)
   
+  const icons = [
+    {
+      id:0,
+      icon: 'InboxIcon',
+    },
+    {
+      id:1,
+      icon: 'MailIcon',
+    },  
+    {
+      id:2,
+      icon: 'NoteIcon',
+    },   
+    {
+      id:3,
+      icon: 'Drafts',
+    },
+  ]
+
+
+ function getIcon(icon) {
+    switch(icon) {
+      case 'InboxIcon':
+        return (<InboxIcon aria-label='Inbox Icon'/>);
+      case 'MailIcon':
+        return (<MailIcon aria-label='Mail Icon'/>);
+      case 'NoteIcon':
+        return (<NoteIcon aria-label='Note Icon'/>);
+      default:
+        return (<MailIcon aria-label='Mail Icon'/>);
+    }
+  }
+
+
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -81,14 +118,18 @@ function ResponsiveDrawer({index,setIndex}) {
       <div className={classes.toolbar} />
 
       <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+        {icons.map((message) => (
+          <ListItem button key={message.id}>
+            {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> */}
+        <ListItemIcon> {getIcon(message.icon)} </ListItemIcon>
           </ListItem>
         ))}
       </List>
     </div>
   )
+
+
+  
 
   const container = window !== undefined ? () => window().document.body : undefined
 

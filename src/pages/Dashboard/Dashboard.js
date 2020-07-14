@@ -2,14 +2,19 @@ import React, { useState } from 'react'
 import ResDrawer from './ResDrawer'
 import { Box, makeStyles, Paper, Grid } from '@material-ui/core'
 import Companion from './Companion'
+import Background from './First Background Test.png'
 
 const useStyles = makeStyles((theme) => ({
   wrap: {
     height: '90vh',
+    
+   
+
     // margin: 0,
     // padding: 0,
     // position: 'relative',
   },
+
   grid: {
     height: '85vh',
     marginTop: 60,
@@ -66,9 +71,11 @@ function Dashboard() {
         <Grid item xs={12} sm={8} className={classes.myTasks}>
           <Paper className={classes.paper}>xs=8</Paper>
         </Grid>
-        <Grid item xs={12}  alignItems='center' sm={4} className={classes.charWrap}>
-          {/* <img className={classes.cat} src={require('./Companions/CatStagesAnimation.gif')} alt="Cat Animation" /> */}
+        <Grid item xs={12}  sm={4} className={classes.charWrap}>
+          {/* <img className={classes.cat} src={require('./First Background Test.png')} alt="Cat Animation" /> */}
           <Companion {...props} />
+          
+         
         </Grid>
         {/* <Grid item xs={3}>
             <Paper className={classes.paper}>xs=3</Paper>

@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.secondary.dark,
   },
   secLight: {
+   
     color: theme.palette.secondary.light,
   },
 }))

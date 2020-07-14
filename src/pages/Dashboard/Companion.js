@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Component } from 'react'
+import Messages from './Messages'
 const finn1 = require('./Companions/FinnS1.gif')
 const finn2 = require('./Companions/FinnS2.gif')
 const finn3 = require('./Companions/FinnS3.gif')
@@ -20,17 +21,20 @@ function Companion(props) {
   
   
   return (
-    <div>
+    <div style={{textAlign: 'left', display:'flex'}}>
       {props.index}
       <img
         style={{
           width: 200,
           height: 200,
           objectFit: 'cover',
+          
+          
         }}
         src={finnList[props.index % finnList.length]}
         alt=""
       />
+      <Messages />
     </div>
   )
 }
