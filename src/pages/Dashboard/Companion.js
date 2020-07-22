@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import { Component } from 'react'
 import Messages from './Messages'
-const finn1 = require('./Companions/FinnS1.gif')
-const finn2 = require('./Companions/FinnS2.gif')
-const finn3 = require('./Companions/FinnS3.gif')
-const finn4 = require('./Companions/FinnS4.gif')
-const finn5 = require('./Companions/CatStagesAnimation.gif')
-const finnList = [finn1, finn2, finn3, finn4, finn5]
+import { MessageContext } from '../../context/message'
+
+
 
 function Companion(props) {
+  const finn1 = require('./Companions/FinnS1.gif')
+  const finn2 = require('./Companions/FinnS2.gif')
+  const finn3 = require('./Companions/FinnS3.gif')
+  const finn4 = require('./Companions/FinnS4.gif')
+  const finn5 = require('./Companions/CatStagesAnimation.gif')
+  const finnList = [finn1, finn2, finn3, finn4, finn5]
+  const [message, setMessage] = React.useContext(MessageContext)
+
 
 
   useEffect(() => {
@@ -21,12 +26,14 @@ function Companion(props) {
   
   
   return (
-    <div style={{textAlign: 'left', display:'flex'}}>
+    <div style={{textAlign: 'left', display:'flex', width:'100%', height: '100%',}}>
       {props.index}
       <img
         style={{
-          width: 200,
-          height: 200,
+          // width: 200,
+          // height: 200,
+          maxWidth: '100%',
+          maxHeight:'100%',
           objectFit: 'cover',
           
           
@@ -34,7 +41,7 @@ function Companion(props) {
         src={finnList[props.index % finnList.length]}
         alt=""
       />
-      <Messages />
+      {message&&<Messages />}
     </div>
   )
 }

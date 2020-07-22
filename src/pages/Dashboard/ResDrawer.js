@@ -18,8 +18,9 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import { ReactComponent as Finn } from './finn.svg'
 import { SvgIcon } from '@material-ui/core'
-import Companion from './Companion'
-import NoteIcon from '@material-ui/icons/Note';
+import NoteIcon from '@material-ui/icons/Note'
+import ChatBubbleIcon from '@material-ui/icons/ChatBubble'
+import { MessageContext } from '../../context/message'
 
 const drawerWidth = 55
 
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`, 
+      width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
     },
   },
@@ -58,56 +59,62 @@ const useStyles = makeStyles((theme) => ({
   profIcon: {
     marginLeft: 'auto',
     '&:hover': {
-        backgroundColor: 'transparent',
-      },
+      backgroundColor: 'transparent',
+    },
   },
   noHover: {
     pointerEvents: 'none',
   },
 }))
 
-
-
-function ResponsiveDrawer({index,setIndex}) {
+function ResponsiveDrawer({ index, setIndex }) {
   let window
   const classes = useStyles()
   const theme = useTheme()
   const [mobileOpen, setMobileOpen] = React.useState(false)
-  
+  const [message, setMessage] = React.useContext(MessageContext)
+
   const icons = [
     {
-      id:0,
+      id: 0,
       icon: 'InboxIcon',
     },
     {
-      id:1,
+      id: 1,
       icon: 'MailIcon',
-    },  
+    },
     {
-      id:2,
+      id: 2,
       icon: 'NoteIcon',
-    },   
+    },
     {
-      id:3,
+      id: 3,
       icon: 'Drafts',
+    },
+    {
+      id: 4,
+      icon: 'ChatBubble',
     },
   ]
 
-
- function getIcon(icon) {
-    switch(icon) {
+  function getIcon(icon) {
+    switch (icon) {
       case 'InboxIcon':
-        return (<InboxIcon aria-label='Inbox Icon'/>);
+        return <InboxIcon aria-label="Inbox Icon" />
       case 'MailIcon':
-        return (<MailIcon aria-label='Mail Icon'/>);
+        return <MailIcon aria-label="Mail Icon" />
       case 'NoteIcon':
-        return (<NoteIcon aria-label='Note Icon'/>);
+        return <NoteIcon aria-label="Note Icon" />
+      case 'ChatBubble':
+        return (
+          <IconButton   edge='start' onClick={() => setMessage(prevState=> !prevState)}>
+            <ChatBubbleIcon  aria-label="Chat Bubble" />
+          </IconButton>
+        )
       default:
-        return (<MailIcon aria-label='Mail Icon'/>);
+        return <MailIcon aria-label="Mail Icon" />
     }
   }
-
-
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen)
@@ -119,25 +126,22 @@ function ResponsiveDrawer({index,setIndex}) {
 
       <List>
         {icons.map((message) => (
-          <ListItem button key={message.id}>
+          <ListItem  key={message.id}>
             {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon> */}
-        <ListItemIcon> {getIcon(message.icon)} </ListItemIcon>
+            <ListItemIcon> {getIcon(message.icon)} </ListItemIcon>
           </ListItem>
         ))}
       </List>
     </div>
   )
 
-
-  
-
   const container = window !== undefined ? () => window().document.body : undefined
 
   return (
     <div className={classes.root}>
       {/* <CssBaseline /> */}
-      <AppBar  className={classes.appBar}> 
-      {/* was position fixed */}
+      <AppBar className={classes.appBar}>
+        {/* was position fixed */}
         <Toolbar>
           <IconButton
             color="inherit"
@@ -149,9 +153,15 @@ function ResponsiveDrawer({index,setIndex}) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Dashboard
+            Dashboard {message ? 'true' : 'false'}
           </Typography>
-          <IconButton edge="start" className={classes.profIcon} onClick={() => setIndex(index+1)}   color="inherit" aria-label="menu">
+          <IconButton
+            edge="start"
+            className={classes.profIcon}
+            onClick={() => setIndex(index + 1)}
+            color="inherit"
+            aria-label="menu"
+          >
             <SvgIcon component={Finn} viewBox="0 0 10 10" fontSize="large" />
           </IconButton>
         </Toolbar>
