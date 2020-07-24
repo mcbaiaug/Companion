@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ResDrawer from './ResDrawer'
 import { Box, makeStyles, Paper, Grid } from '@material-ui/core'
 import Companion from './Companion'
-import Background from './First Background Test.png'
+import Background from './Background'
 
 const useStyles = makeStyles((theme) => ({
   wrap: {
@@ -27,8 +27,10 @@ const useStyles = makeStyles((theme) => ({
   },
 
   charWrap: {
-    backgroundColor: theme.palette.primary.light,
+    // backgroundColor: theme.palette.primary.light,
+    // objectFit: 'cover',
     height: '40%',
+    width: 170,
   },
 
   agendaWrap: {
@@ -52,7 +54,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
-  char: {},
+  char: {
+  
+  },
 }))
 
 function Dashboard() {
@@ -73,7 +77,8 @@ function Dashboard() {
         </Grid>
         <Grid item xs={12}  sm={4} className={classes.charWrap}>
           {/* <img className={classes.cat} src={require('./First Background Test.png')} alt="Cat Animation" /> */}
-          <Companion {...props} />
+          <Background />
+          <Companion  className={classes.char} {...props}  />
           
          
         </Grid>

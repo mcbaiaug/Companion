@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Component } from 'react'
 import Messages from './Messages'
 import { MessageContext } from '../../context/message'
+import Forecast from './Forecast'
 
 
 
@@ -26,16 +27,16 @@ function Companion(props) {
   
   
   return (
-    <div style={{textAlign: 'left', display:'flex', width:'100%', height: '100%',}}>
+    <div style={{textAlign: 'left', display:'flex', width:'100%', height: '100%', marginTop: '-200px',}}>
       {props.index}
+      <Forecast />
       <img
         style={{
           // width: 200,
           // height: 200,
           maxWidth: '100%',
           maxHeight:'100%',
-          objectFit: 'cover',
-          
+          objectFit: 'cover'
           
         }}
         src={finnList[props.index % finnList.length]}
