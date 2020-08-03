@@ -21,6 +21,8 @@ import { SvgIcon } from '@material-ui/core'
 import NoteIcon from '@material-ui/icons/Note'
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble'
 import { MessageContext } from '../../context/message'
+import { ForecastContext } from '../../context/forecast'
+import CloudIcon from '@material-ui/icons/Cloud';
 
 const drawerWidth = 55
 
@@ -65,6 +67,9 @@ const useStyles = makeStyles((theme) => ({
   noHover: {
     pointerEvents: 'none',
   },
+  sideButton: {
+    marginTop: 0,
+  }
 }))
 
 function ResponsiveDrawer({ index, setIndex }) {
@@ -73,6 +78,7 @@ function ResponsiveDrawer({ index, setIndex }) {
   const theme = useTheme()
   const [mobileOpen, setMobileOpen] = React.useState(false)
   const [message, setMessage] = React.useContext(MessageContext)
+  const [forecast, setForecast] = React.useContext(ForecastContext)
 
   const icons = [
     {
@@ -95,6 +101,10 @@ function ResponsiveDrawer({ index, setIndex }) {
       id: 4,
       icon: 'ChatBubble',
     },
+    {
+      id: 5,
+      icon: 'CloudIcon',
+    },
   ]
 
   function getIcon(icon) {
@@ -107,8 +117,14 @@ function ResponsiveDrawer({ index, setIndex }) {
         return <NoteIcon aria-label="Note Icon" />
       case 'ChatBubble':
         return (
-          <IconButton   edge='start' onClick={() => setMessage(prevState=> !prevState)}>
+          <IconButton  edge='start' onClick={() => setMessage(prevState=> !prevState)}>
             <ChatBubbleIcon  aria-label="Chat Bubble" />
+          </IconButton>
+        )
+      case 'CloudIcon':
+        return (
+          <IconButton   className={classes.sideButton}edge='start' onClick={() => setForecast(prevState=> !prevState)}>
+            <CloudIcon  aria-label="Cloud Icon" />
           </IconButton>
         )
       default:

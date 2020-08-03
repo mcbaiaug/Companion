@@ -16,7 +16,6 @@ const Forecast = () => {
   useEffect(() => {
     getForecast()
     const interval = setInterval(() => {
-      console.log('Test')
       getForecast()
     }, (5*60*1000));
     return () => clearInterval(interval)
@@ -27,7 +26,6 @@ const Forecast = () => {
     if (city.length === 0) {
       return setError(true)
     }
-
     // Clear state in preparation for new data
     setError(false)
     setResponseObj({})

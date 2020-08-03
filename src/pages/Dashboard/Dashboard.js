@@ -3,17 +3,29 @@ import ResDrawer from './ResDrawer'
 import { Box, makeStyles, Paper, Grid } from '@material-ui/core'
 import Companion from './Companion'
 import Background from './Background'
+import { ForecastContext } from '../../context/forecast'
+// import Forecast from './Forecast'
+import FiveDayForecast from './SideButtons/FiveDayForecast'
 
 const useStyles = makeStyles((theme) => ({
   wrap: {
     height: '90vh',
-    
+    marginLeft: 55, //Change this to match the width of the drawer
+    '@media (max-width: 479px)' : {
+     marginLeft:0, 
+    }
+        
+      
    
 
     // margin: 0,
     // padding: 0,
     // position: 'relative',
   },
+
+ 
+
+ 
 
   grid: {
     height: '85vh',
@@ -57,6 +69,7 @@ const useStyles = makeStyles((theme) => ({
   char: {
   
   },
+
 }))
 
 function Dashboard() {
@@ -64,12 +77,17 @@ function Dashboard() {
 
   const [index, setIndex] = useState(0)
   const props = { index: index, setIndex: setIndex }
+  const [forecast, setForecast] = React.useContext(ForecastContext)
+
+
+
   return (
     <div className={classes.wrap}>
       <ResDrawer {...props} />
       <Grid className={classes.grid} container spacing={3}>
         <Grid item xs={12} sm={8} className={classes.adaptive}>
-          <Paper className={classes.paper}>xs=8</Paper>
+          {/* <Paper className={classes.paper}>Check</Paper> */}
+          {forecast&&<FiveDayForecast />}
         </Grid>
         <Grid item xs={12} sm={4} className={classes.agendaWrap}></Grid>
         <Grid item xs={12} sm={8} className={classes.myTasks}>
