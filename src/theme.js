@@ -21,6 +21,10 @@ const theme = createMuiTheme({
       
     },
   },
+  typography:{
+    fontFamily: 'PixelMaster',
+    fontSize: 20,
+  },
   overrides: {
     MuiCssBaseline: {
       '@global': {

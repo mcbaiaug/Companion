@@ -27,6 +27,13 @@ const useStyles = makeStyles((theme) => ({
   },
   grid:{
     margin:'auto',
+    flexWrap: 'nowrap',
+    [theme.breakpoints.down('xs')]: {
+      display: 'flex',
+      flexWrap: 'nowrap',
+      overflowX: 'auto',
+      
+    },
   }
 }))
 
@@ -105,7 +112,7 @@ function FiveDayForecast() {
 
   return (
     <div className={classes.root}>
-    <Grid className={classes.grid} container wrap='nowrap' spacing={1}>
+    <Grid className={classes.grid} container  spacing={1}>
     
         {formatDayCards()}
       

@@ -168,8 +168,9 @@ function ResponsiveDrawer({ index, setIndex }) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            Dashboard {message ? 'true' : 'false'}
+          <Typography variant="h4" noWrap>
+            Dashboard
+             {/* {message ? 'true' : 'false'} */}
           </Typography>
           <IconButton
             edge="start"

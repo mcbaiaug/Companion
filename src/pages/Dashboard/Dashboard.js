@@ -9,9 +9,9 @@ import FiveDayForecast from './SideButtons/FiveDayForecast'
 
 const useStyles = makeStyles((theme) => ({
   wrap: {
-    height: '90vh',
+    height: '93vh',
     marginLeft: 55, //Change this to match the width of the drawer
-    '@media (max-width: 479px)' : {
+    '@media (max-width: 800px)' : {
      marginLeft:0, 
     }
         
@@ -28,7 +28,8 @@ const useStyles = makeStyles((theme) => ({
  
 
   grid: {
-    height: '85vh',
+    height: '100%',
+    minHeight: '100%',
     marginTop: 60,
   },
   paper: {
@@ -43,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
     // objectFit: 'cover',
     height: '40%',
     width: 170,
+  
   },
 
   agendaWrap: {
@@ -84,7 +86,8 @@ function Dashboard() {
   return (
     <div className={classes.wrap}>
       <ResDrawer {...props} />
-      <Grid className={classes.grid} container spacing={3}>
+      {/* had spacing of 3  */}
+      <Grid className={classes.grid} container >
         <Grid item xs={12} sm={8} className={classes.adaptive}>
           {/* <Paper className={classes.paper}>Check</Paper> */}
           {forecast&&<FiveDayForecast />}
@@ -93,7 +96,7 @@ function Dashboard() {
         <Grid item xs={12} sm={8} className={classes.myTasks}>
           <Paper className={classes.paper}>xs=8</Paper>
         </Grid>
-        <Grid item xs={12}  sm={4} className={classes.charWrap}>
+        <Grid item xs={12} sm={4} className={classes.charWrap}>
           {/* <img className={classes.cat} src={require('./First Background Test.png')} alt="Cat Animation" /> */}
           <Background />
           <Companion  className={classes.char} {...props}  />
