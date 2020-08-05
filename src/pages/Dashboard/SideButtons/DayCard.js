@@ -56,7 +56,8 @@ const DayCard = ({ reading }) => {
         <CardMedia
           className={classes.media}
           component="image"
-          image={require('./WeatherImages/Thunderstorm.gif')}
+          // image={require('./WeatherImages/Thunderstorm.gif')}
+          image={require(`./WeatherImages/${weatherParse(reading.weather[0].id)}.gif`)}
           title={moment(newDate).format('dddd')}
         />
         <CardContent>

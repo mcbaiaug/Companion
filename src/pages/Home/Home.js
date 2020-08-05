@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
     
     color: theme.palette.secondary.light,
   },
+  cat: {
+    height:'15rem',
+  },
 }))
 
 
@@ -46,14 +49,15 @@ function Home() {
           {/* <Grid item xs={12}>
                         <Paper className={classes.paper}>xs=12</Paper>
                     </Grid> */}
-          <Grid alignContent="center" container justify="center" item xs={12} sm={6}>
+          <Grid alignContent="center" direction='column' container justify="center" item xs={12} sm={7}>
             {/* <Paper className={classes.paper}>xs=12 sm=6</Paper> */}
-            <Typography variant="h4">Choose a companion and grow along with them!</Typography>
-            <Typography variant="h5" className={classes.secLight}>
+            <Typography display='block' variant="h3">Choose a companion <br/> and grow along with them!</Typography>
+            <Typography display='block' variant="h4" className={classes.secLight}>
+              
               Let your companion help you!
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid  item xs={12} sm={5}>
             {/* <SvgIcon className={classes.cat} component={Stages} viewBox="0 0 180 180" fontSize="large" /> */}
             <img className={classes.cat} src={require('./CatStagesAnimation.gif')} alt="Cat Animation" />
           </Grid>

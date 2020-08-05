@@ -24,7 +24,7 @@ import { MessageContext } from '../../context/message'
 import { ForecastContext } from '../../context/forecast'
 import CloudIcon from '@material-ui/icons/Cloud';
 
-const drawerWidth = 55
+const drawerWidth = 70
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(1),
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -57,7 +57,7 @@ function SignUp(props) {
 
   function Copyright() {
     return (
-      <Typography variant="body2" color="textSecondary" align="center">
+      <Typography variant="body1" color="textSecondary" align="center">
         {'Copyright © '}
         <Link color="inherit" href="https://material-ui.com/">
           Companion
@@ -104,8 +104,8 @@ function SignUp(props) {
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign up
+          <Typography  variant="h4">
+            Register
           </Typography>
           <form className={classes.form} noValidate>
             <Grid container spacing={2}>
@@ -183,7 +183,7 @@ function SignUp(props) {
             </Button>
             <Grid container justify="center">
               <Grid item>
-                <Link href="/login" variant="body2" color="secondary">
+                <Link href="/login" variant="body1" color="secondary">
                   Already have an account? Sign in
                 </Link>
               </Grid>

@@ -30,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
   link: {
     textDecoration: 'none',
   },
+  buttonScale: {
+    fontSize: '2rem'
+  },
 }))
 
 function Nav() {
@@ -44,16 +47,16 @@ function Nav() {
         <Toolbar variant="regular" className={classes.root}>
           <IconButton edge="end" className={classes.menuButton} color="inherit" aria-label="menu">
             <SvgIcon component={Finn} viewBox="0 0 10 10" fontSize="large" />
-            <Typography variant="h5">Companion</Typography>
+            <Typography variant="h4">Companion</Typography>
           </IconButton>
           <div className={classes.title}>
-            <Button color="inherit">Finn</Button>
-            <Button color="inherit">Asa</Button>
-            <Button color="inherit">Doug</Button>
+            <Button className={classes.buttonScale} color="inherit">Finn</Button>
+            <Button className={classes.buttonScale} color="inherit">Asa</Button>
+            <Button className={classes.buttonScale} color="inherit">Doug</Button>
           </div>
           {authTokens ? (
             <div className={classes.login}>
-                <Button onClick={() => {
+                <Button className={classes.buttonScale} onClick={() => {
                   console.log('aaaa')
                   localStorage.removeItem('tokens')
                   setAuthTokens(null)} }color="secondary">Logout</Button>
@@ -61,10 +64,10 @@ function Nav() {
           ) : (
             <div className={classes.login}>
               <Link className={classes.link} to="/login">
-                <Button color="secondary">Login</Button>
+                <Button className={classes.buttonScale} color="secondary">Login</Button>
               </Link>
               <Link className={classes.link} to="/register">
-                <Button color="secondary">Register</Button>
+                <Button className={classes.buttonScale} color="secondary">Register</Button>
               </Link>
             </div>
           )}
