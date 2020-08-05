@@ -52,7 +52,7 @@ function BaseNav() {
         <Toolbar variant="regular" className={classes.root}>
           <IconButton  onClick={routeChange} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <SvgIcon component={Finn} viewBox="0 0 10 10" fontSize="large" />
-            <Typography variant="h5">Companion</Typography>
+            <Typography variant="h4">Companion</Typography>
           </IconButton>
 
           <ResDrawer />

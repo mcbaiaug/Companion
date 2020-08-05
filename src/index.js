@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker'
 import { ThemeProvider } from '@material-ui/core/styles'
 import theme from './theme'
 import { CssBaseline } from '@material-ui/core'
+import './fonts/PixelMaster.ttf'
 
 ReactDOM.render(
   <React.StrictMode>

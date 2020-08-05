@@ -18,7 +18,12 @@ const theme = createMuiTheme({
     },
     background: {
       default: '#212121',
+      
     },
+  },
+  typography:{
+    fontFamily: 'PixelMaster',
+    fontSize: 20,
   },
   overrides: {
     MuiCssBaseline: {
