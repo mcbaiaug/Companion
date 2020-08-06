@@ -28,10 +28,11 @@ const useStyles = makeStyles((theme) => ({
   grid:{
     margin:'auto',
     flexWrap: 'nowrap',
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('md')]: {
       display: 'flex',
       flexWrap: 'nowrap',
       overflowX: 'auto',
+      overflowY: 'hidden',
       
     },
   }

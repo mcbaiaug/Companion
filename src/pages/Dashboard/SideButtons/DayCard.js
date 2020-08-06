@@ -13,7 +13,7 @@ import { weatherCodes } from '../weatherCodes'
 const useStyles = makeStyles((theme) => ({
   root: {
     height: '100%',
-    marginTop: '5%',
+    marginTop: '6%',
     minWidth: '125px',
     [theme.breakpoints.down('xs')]: {
       marginTop:0,
@@ -31,8 +31,10 @@ var moment = require('moment')
 const DayCard = ({ reading }) => {
   const classes = useStyles()
   let newDate = new Date()
-  const weekday = reading.dt * 1000
-  newDate.setTime(weekday)
+  // const weekday = reading.dt * 1000
+  // const weekday = 21600000
+  // console.log(weekday)
+  // newDate.setTime(weekday)
 
   console.log(reading)
 
@@ -65,7 +67,7 @@ const DayCard = ({ reading }) => {
           {/* <Typography variant="subtitle1">{weatherParse(reading.weather[0].id)}</Typography> */}
           <Typography variant="subtitle1">{moment(newDate).format('dddd')}</Typography>
           <Typography variant="subtitle2" color="textSecondary" component="p">
-            {moment(newDate).format('MMMM Do, h:mm a')}
+            {moment(newDate).format('MMMM Do, YYYY')}
           </Typography>
         </CardContent>
 
