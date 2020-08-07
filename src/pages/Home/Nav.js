@@ -45,7 +45,7 @@ function Nav() {
     <div className={classes.root}>
       <AppBar position="static" color="primary">
         <Toolbar variant="regular" className={classes.root}>
-          <IconButton edge="end" className={classes.menuButton} color="inherit" aria-label="menu">
+          <IconButton edge="end" className={classes.menuButton} color="inherit"  disableRipple aria-label="menu">
             <SvgIcon component={Finn} viewBox="0 0 10 10" fontSize="large" />
             <Typography variant="h4">Companion</Typography>
           </IconButton>
