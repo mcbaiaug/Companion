@@ -8,7 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import apiConfig from '../../../apiKeys'
-import { ForecastContext } from '../../../context/forecast'
+// import { ForecastContext } from '../../../context/forecast'
 import DayCard from './DayCard'
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -46,7 +46,7 @@ function FiveDayForecast() {
   const [dayData, setDayData] = useState([])
   let [error, setError] = useState(false)
   let [loading, setLoading] = useState(false)
-  const [forecast, setForecast] = React.useContext(ForecastContext)
+  // const [forecast, setForecast] = React.useContext(ForecastContext)
 
   function formatDayCards() {
     // dayData.map((reading,index) => console.log(reading))

@@ -7,30 +7,27 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import theme from './theme'
 import { CssBaseline } from '@material-ui/core'
 import './fonts/PixelMaster.ttf'
-import {createStore} from 'redux'
+import { createStore } from 'redux'
 import allReducers from './reducers'
-
-
+import { Provider } from 'react-redux'
 
 //Store-> Globalized State
 const store = createStore(allReducers)
 
 //Action
 
-
-
 //Reducer
 
 //Dispatch
 
-
-
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <App />
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <App />
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>,
 
   document.getElementById('root')

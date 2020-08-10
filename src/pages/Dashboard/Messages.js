@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { Card, CardMedia } from '@material-ui/core'
-import { MessageContext } from '../../context/message'
+// import { MessageContext } from '../../context/message'
+import { useSelector, useDispatch} from 'react-redux'
+import {displayMessage} from '../../actions'
 
 
 const useStyles = makeStyles((theme) => ({
@@ -43,7 +45,9 @@ function Messages() {
   const images = { bubble, revBubble }
   const classes = useStyles()
   const [image, setImage] = useState(images.bubble)
-  const [message, setMessage] = React.useContext(MessageContext)
+  // const [message, setMessage] = React.useContext(MessageContext)
+  const dispatch = useDispatch()
+  const message = useSelector(state => state.displayMessage)
 
 
 
@@ -53,7 +57,8 @@ function Messages() {
     setImage(images.revBubble)
     setTimeout(() => {
       // set timer for 2 seconds
-     setMessage(!message)
+    //  setMessage(!message)
+    dispatch(displayMessage())
      setImage(between)
       
     }, 2000)

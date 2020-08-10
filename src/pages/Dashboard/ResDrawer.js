@@ -20,9 +20,9 @@ import { ReactComponent as Finn } from './finn.svg'
 import { SvgIcon } from '@material-ui/core'
 import NoteIcon from '@material-ui/icons/Note'
 import ChatBubbleIcon from '@material-ui/icons/ChatBubble'
-import { MessageContext } from '../../context/message'
-import { ForecastContext } from '../../context/forecast'
 import CloudIcon from '@material-ui/icons/Cloud';
+import { useDispatch } from 'react-redux'
+import {displayForecast, displayMessage} from '../../actions'
 
 const drawerWidth = 70
 
@@ -77,8 +77,9 @@ function ResponsiveDrawer({ index, setIndex }) {
   const classes = useStyles()
   const theme = useTheme()
   const [mobileOpen, setMobileOpen] = React.useState(false)
-  const [message, setMessage] = React.useContext(MessageContext)
-  const [forecast, setForecast] = React.useContext(ForecastContext)
+  // const [message, setMessage] = React.useContext(MessageContext)
+  const dispatch = useDispatch()
+  // const [forecast, setForecast] = React.useContext(ForecastContext)
 
   const icons = [
     {
@@ -117,13 +118,13 @@ function ResponsiveDrawer({ index, setIndex }) {
         return <NoteIcon aria-label="Note Icon" />
       case 'ChatBubble':
         return (
-          <IconButton  edge='start' onClick={() => setMessage(prevState=> !prevState)}>
+          <IconButton  edge='start' onClick={() => dispatch(displayMessage())}>
             <ChatBubbleIcon  aria-label="Chat Bubble" />
           </IconButton>
         )
       case 'CloudIcon':
         return (
-          <IconButton   className={classes.sideButton}edge='start' onClick={() => setForecast(prevState=> !prevState)}>
+          <IconButton   className={classes.sideButton}edge='start' onClick={() => dispatch(displayForecast()) }>
             <CloudIcon  aria-label="Cloud Icon" />
           </IconButton>
         )

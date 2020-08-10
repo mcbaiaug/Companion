@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Component } from 'react'
 import Messages from './Messages'
-import { MessageContext } from '../../context/message'
 import Forecast from './Forecast'
+import {useSelector} from 'react-redux'
 
 function Companion(props) {
   const finn1 = require('./Companions/FinnS1.gif')
@@ -11,7 +11,8 @@ function Companion(props) {
   const finn4 = require('./Companions/FinnS4.gif')
   const finn5 = require('./Companions/CatStagesAnimation.gif')
   const finnList = [finn1, finn2, finn3, finn4, finn5]
-  const [message, setMessage] = React.useContext(MessageContext)
+  // const [message, setMessage] = React.useContext(MessageContext)
+  const message = useSelector(state =>state.displayMessage)
   const [height, setHeight] = useState(0)
 
   useEffect(() => {

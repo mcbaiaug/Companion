@@ -3,9 +3,11 @@ import ResDrawer from './ResDrawer'
 import { Box, makeStyles, Paper, Grid } from '@material-ui/core'
 import Companion from './Companion'
 import Background from './Background'
-import { ForecastContext } from '../../context/forecast'
 // import Forecast from './Forecast'
 import FiveDayForecast from './SideButtons/FiveDayForecast'
+import { useSelector } from 'react-redux'
+import Agenda from './Agenda/Agenda'
+
 
 const useStyles = makeStyles((theme) => ({
   wrap: {
@@ -50,6 +52,8 @@ const useStyles = makeStyles((theme) => ({
   agendaWrap: {
     backgroundColor: theme.palette.primary.dark,
     height: '60%',
+    overflowX: 'hidden', 
+    overflowY: 'auto' ,
     [theme.breakpoints.down('xs')]: {
       height: '40%',
     },
@@ -79,8 +83,10 @@ function Dashboard() {
 
   const [index, setIndex] = useState(0)
   const props = { index: index, setIndex: setIndex }
-  const [forecast, setForecast] = React.useContext(ForecastContext)
-
+  // const [forecast, setForecast] = React.useContext(ForecastContext)
+  const forecast = useSelector(state => state.displayForecast)
+  console.log('Forecast')
+  console.log(forecast)
 
 
   return (
@@ -92,7 +98,9 @@ function Dashboard() {
           {/* <Paper className={classes.paper}>Check</Paper> */}
           {forecast&&<FiveDayForecast />}
         </Grid>
-        <Grid item xs={12} sm={4} className={classes.agendaWrap}></Grid>
+        <Grid item xs={12} sm={4} className={classes.agendaWrap}>
+          <Agenda/>
+        </Grid>
         <Grid item xs={12} sm={8} className={classes.myTasks}>
           <Paper className={classes.paper}>xs=8</Paper>
         </Grid>
