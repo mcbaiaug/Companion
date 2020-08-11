@@ -6,6 +6,8 @@ import { makeStyles } from '@material-ui/core/styles'
 const useStyles = makeStyles((theme) => ({
   align: {
     verticalAlign: 'middle',
+    marginTop:'.5rem',
+    left:'1.8rem'
   },
 }))
 
@@ -17,7 +19,7 @@ function AgendaForm({ addAgenda }) {
   const handleSubmit = (e) => {
     console.log('check')
     e.preventDefault()
-    if (!text || !description) return
+    if (!text) return
     addAgenda(text, description)
     setText('')
     setDescription('')

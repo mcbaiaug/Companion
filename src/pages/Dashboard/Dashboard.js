@@ -54,6 +54,11 @@ const useStyles = makeStyles((theme) => ({
     height: '60%',
     overflowX: 'hidden', 
     overflowY: 'auto' ,
+    // overflow:'hidden',
+    '&::-webkit-scrollbar': {
+      width: 0,  /* Remove scrollbar space */
+      background: 'transparent', /* Optional: just make scrollbar invisible */
+  },
     [theme.breakpoints.down('xs')]: {
       height: '40%',
     },

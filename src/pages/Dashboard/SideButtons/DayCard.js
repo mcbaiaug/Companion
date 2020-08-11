@@ -31,10 +31,10 @@ var moment = require('moment')
 const DayCard = ({ reading }) => {
   const classes = useStyles()
   let newDate = new Date()
-  // const weekday = reading.dt * 1000
+  const weekday = reading.dt * 1000
   // const weekday = 21600000
   // console.log(weekday)
-  // newDate.setTime(weekday)
+  newDate.setTime(weekday)
 
   console.log(reading)
 
