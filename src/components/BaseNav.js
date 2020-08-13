@@ -1,9 +1,8 @@
 import React from 'react'
-import { Button, AppBar, Typography, Toolbar, IconButton, SvgIcon } from '@material-ui/core'
+import { AppBar, Typography, Toolbar, IconButton, SvgIcon } from '@material-ui/core'
 import { ReactComponent as Finn } from '../pages/Home/finn.svg'
 import { makeStyles } from '@material-ui/core/styles'
 import ResDrawer from '../pages/Home/ResDrawer'
-import { Link } from 'react-router-dom'
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -44,7 +43,7 @@ function BaseNav() {
   const classes = useStyles()
 
   const existingTokens = JSON.parse(localStorage.getItem('tokens'))
-  const [authTokens, setAuthTokens] = React.useState(existingTokens)
+  // const [authTokens, setAuthTokens] = React.useState(existingTokens)
 
   return (
     <div className={classes.root}>

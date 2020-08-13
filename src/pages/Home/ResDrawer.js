@@ -6,12 +6,10 @@ import List from '@material-ui/core/List'
 import Divider from '@material-ui/core/Divider'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-import MenuIcon from '@material-ui/icons/Menu'
 // import MenuOpenIcon from '@material-ui/icons/MenuOpen'
 import IconButton from '@material-ui/core/IconButton'
 import ShortTextIcon from '@material-ui/icons/ShortText'
 import { Link } from 'react-router-dom'
-
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -19,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   fullList: {
     width: 'auto',
+    
   },
   red: {
     color: theme.palette.secondary,
@@ -36,9 +35,8 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     textDecoration: 'none',
-    color:'white',
+    color: 'white',
   },
-  
 }))
 
 export default function TemporaryDrawer() {

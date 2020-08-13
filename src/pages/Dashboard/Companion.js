@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Component } from 'react'
 import Messages from './Messages'
 import Forecast from './Forecast'
 import {useSelector} from 'react-redux'
@@ -14,6 +13,7 @@ function Companion(props) {
   // const [message, setMessage] = React.useContext(MessageContext)
   const message = useSelector(state =>state.displayMessage)
   const [height, setHeight] = useState(0)
+  const {index, setIndex } = props
 
   useEffect(() => {
     //This sets a negative margin that is the size of the background image height
@@ -30,14 +30,16 @@ function Companion(props) {
     return () => window.removeEventListener('resize', handleSize)
   }, [])
 
+
+
   useEffect(() => {
-    if (props.index % finnList.length === 2) {
+    if (index % finnList.length === 2) {
       setTimeout(() => {
         // set timer for 4.8 seconds, incremenet index when complete
-        props.setIndex((prevIndex) => prevIndex + 1)
+        setIndex((prevIndex) => prevIndex + 1)
       }, 4500)
     }
-  }, [props.index, props.setIndex]) // if props.index or props.setIndex changes, exec function
+  }, [index, setIndex, finnList.length, ]) // if props.index or props.setIndex changes, exec function
 
   return (
     <div style={{ textAlign: 'left', display: 'flex', width: '100%', height: '100%', marginTop: height }}>

@@ -29,17 +29,20 @@ const drawerWidth = 70
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+   
   },
   drawer: {
     [theme.breakpoints.up('sm')]: {
       width: drawerWidth,
       flexShrink: 0,
+      
     },
   },
   appBar: {
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
+      
     },
   },
   menuButton: {
@@ -69,6 +72,7 @@ const useStyles = makeStyles((theme) => ({
   },
   sideButton: {
     marginTop: 0,
+    
   }
 }))
 
@@ -138,7 +142,7 @@ function ResponsiveDrawer({ index, setIndex }) {
   }
 
   const drawer = (
-    <div>
+    <div style={{overflowX:'hidden'}}>
       <div className={classes.toolbar} />
 
       <List>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import ResDrawer from './ResDrawer'
-import { Box, makeStyles, Paper, Grid } from '@material-ui/core'
+import { makeStyles, Paper, Grid } from '@material-ui/core'
 import Companion from './Companion'
 import Background from './Background'
 // import Forecast from './Forecast'
@@ -11,7 +11,9 @@ import Agenda from './Agenda/Agenda'
 
 const useStyles = makeStyles((theme) => ({
   wrap: {
-    height: '93vh',
+    height: '94vh',
+    // overflowX: 'hidden',
+    // overflowY: 'hidden',
     marginLeft: 55, //Change this to match the width of the drawer
     '@media (max-width: 800px)' : {
      marginLeft:0, 
@@ -52,7 +54,8 @@ const useStyles = makeStyles((theme) => ({
   agendaWrap: {
     backgroundColor: theme.palette.primary.dark,
     height: '60%',
-    overflowX: 'hidden', 
+    // overflowX: 'hidden', 
+    // width:170,
     overflowY: 'auto' ,
     // overflow:'hidden',
     '&::-webkit-scrollbar': {

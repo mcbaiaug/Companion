@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import AgendaItem from './AgendaItem'
-import AgendaForm from './AgendaForm'
-import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core'
 import IconButton from '@material-ui/core/IconButton'
+import Typography from '@material-ui/core/Typography'
 import AddCircleIcon from '@material-ui/icons/AddCircle'
+import React, { useState } from 'react'
+import AgendaForm from './AgendaForm'
+import AgendaItem from './AgendaItem'
 // import { DragDropContext } from 'react-beautiful-dnd';
 
 const useStyles = makeStyles((theme) => ({
@@ -31,33 +31,33 @@ function Agenda() {
   const classes = useStyles()
   const [agenda, setAgenda] = useState([
     { text: 'This is my first thing to do', description: 'This is my first description', isCompleted: false },
-    { text: 'This is my second thing to do', description: 'This is my first description', isCompleted: false },
-    { text: 'This is my third thing to do', description: 'This is my first description', isCompleted: false },
-    { text: 'This is my third thing to do', description: 'This is my first description', isCompleted: false },
-    {
-      text:
-        'This is my third thing to s is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to d do',
-      description: 'This is my first description',
-      isCompleted: false,
-    },
-    {
-      text:
-        'This is my third thing to s is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to d do',
-      description: 'This is my first description',
-      isCompleted: false,
-    },
-    {
-      text:
-        'This is my third thing to s is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to d do',
-      description: 'This is my first description',
-      isCompleted: false,
-    },
-    {
-      text:
-        'This is my third thing to s is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to d do',
-      description: 'This is my first description',
-      isCompleted: false,
-    },
+    // { text: 'This is my second thing to do', description: 'This is my first description', isCompleted: false },
+    // { text: 'This is my third thing to do', description: 'This is my first description', isCompleted: false },
+    // { text: 'This is my third thing to do', description: 'This is my first description', isCompleted: false },
+    // {
+    //   text:
+    //     'This is my third thing to s is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to d do',
+    //   description: 'This is my first description',
+    //   isCompleted: false,
+    // },
+    // {
+    //   text:
+    //     'This is my third thing to s is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to d do',
+    //   description: 'This is my first description',
+    //   isCompleted: false,
+    // },
+    // {
+    //   text:
+    //     'This is my third thing to s is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to d do',
+    //   description: 'This is my first description',
+    //   isCompleted: false,
+    // },
+    // {
+    //   text:
+    //     'This is my third thing to s is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to d do',
+    //   description: 'This is my first description',
+    //   isCompleted: false,
+    // },
   ])
   const[addItem, setAddItem] = useState(false)
 

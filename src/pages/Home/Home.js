@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react'
+import React, {useEffect} from 'react'
 import { Typography, Paper, Grid } from '@material-ui/core'
 // import { ReactComponent as Finn } from './finn.svg'
 import { makeStyles } from '@material-ui/core/styles'
@@ -38,7 +38,7 @@ function Home() {
   useEffect(() => {
     console.log('aa')
     setAuthTokens(localStorage.getItem('tokens'))
-  }, [localStorage, setAuthTokens])
+  }, [setAuthTokens])
 
   return (
     <div>
