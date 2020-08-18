@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 55, //Change this to match the width of the drawer
     '@media (max-width: 800px)' : {
      marginLeft:0, 
+     overflowX: 'hidden',
     }
         
       

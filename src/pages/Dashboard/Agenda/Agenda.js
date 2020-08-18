@@ -31,33 +31,33 @@ function Agenda() {
   const classes = useStyles()
   const [agenda, setAgenda] = useState([
     { text: 'This is my first thing to do', description: 'This is my first description', isCompleted: false },
-    // { text: 'This is my second thing to do', description: 'This is my first description', isCompleted: false },
-    // { text: 'This is my third thing to do', description: 'This is my first description', isCompleted: false },
-    // { text: 'This is my third thing to do', description: 'This is my first description', isCompleted: false },
-    // {
-    //   text:
-    //     'This is my third thing to s is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to d do',
-    //   description: 'This is my first description',
-    //   isCompleted: false,
-    // },
-    // {
-    //   text:
-    //     'This is my third thing to s is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to d do',
-    //   description: 'This is my first description',
-    //   isCompleted: false,
-    // },
-    // {
-    //   text:
-    //     'This is my third thing to s is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to d do',
-    //   description: 'This is my first description',
-    //   isCompleted: false,
-    // },
-    // {
-    //   text:
-    //     'This is my third thing to s is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to d do',
-    //   description: 'This is my first description',
-    //   isCompleted: false,
-    // },
+    { text: 'This is my second thing to do', description: 'This is my first description', isCompleted: false },
+    { text: 'This is my third thing to do', description: 'This is my first description', isCompleted: false },
+    { text: 'This is my third thing to do', description: 'This is my first description', isCompleted: false },
+    {
+      text:
+        'This is my third thing to s is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to d do',
+      description: 'This is my first description',
+      isCompleted: false,
+    },
+    {
+      text:
+        'This is my third thing to s is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to d do',
+      description: 'This is my first description',
+      isCompleted: false,
+    },
+    {
+      text:
+        'This is my third thing to s is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to d do',
+      description: 'This is my first description',
+      isCompleted: false,
+    },
+    {
+      text:
+        'This is my third thing to s is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to ds is my third thing to d do',
+      description: 'This is my first description',
+      isCompleted: false,
+    },
   ])
   const[addItem, setAddItem] = useState(false)
 

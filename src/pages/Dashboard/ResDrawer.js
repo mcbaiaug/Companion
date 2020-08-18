@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import AppBar from '@material-ui/core/AppBar'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Divider from '@material-ui/core/Divider'
-import Drawer from '@material-ui/core/Drawer'
 import Hidden from '@material-ui/core/Hidden'
 import IconButton from '@material-ui/core/IconButton'
 import InboxIcon from '@material-ui/icons/MoveToInbox'
@@ -23,6 +22,8 @@ import ChatBubbleIcon from '@material-ui/icons/ChatBubble'
 import CloudIcon from '@material-ui/icons/Cloud';
 import { useDispatch } from 'react-redux'
 import {displayForecast, displayMessage} from '../../actions'
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
+
 
 const drawerWidth = 70
 
@@ -191,7 +192,7 @@ function ResponsiveDrawer({ index, setIndex }) {
       <nav className={classes.drawer} aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden smUp implementation="css">
-          <Drawer
+          <SwipeableDrawer
             container={container}
             variant="temporary"
             anchor={theme.direction === 'rtl' ? 'right' : 'left'}
@@ -205,10 +206,10 @@ function ResponsiveDrawer({ index, setIndex }) {
             }}
           >
             {drawer}
-          </Drawer>
+          </SwipeableDrawer>
         </Hidden>
         <Hidden xsDown implementation="css">
-          <Drawer
+          <SwipeableDrawer
             classes={{
               paper: classes.drawerPaper,
             }}
@@ -216,7 +217,7 @@ function ResponsiveDrawer({ index, setIndex }) {
             open
           >
             {drawer}
-          </Drawer>
+          </SwipeableDrawer>
         </Hidden>
       </nav>
     </div>
